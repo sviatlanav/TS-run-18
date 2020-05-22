@@ -187,3 +187,7 @@ export  function getBookProp(book: Book, property: BookProperties): any{
   
     return result;    
   }
+
+  export function purge<T>(inventory: Array<T>): Array<T>{
+    return inventory.slice(2);
+  }

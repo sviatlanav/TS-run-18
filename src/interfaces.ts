@@ -28,4 +28,13 @@ interface Book {
     assistCustomer: (customer: string) => void,
   }
 
-  export { Book, DamageLogger as Logger, Person, Author, Librarian }
+  interface Magazine {
+    title: string,
+    publisher: string,
+  }
+  
+  interface ShelfItem{
+    title: string;
+  }
+
+  export { Book, DamageLogger as Logger, Person, Author, Librarian, Magazine, ShelfItem }

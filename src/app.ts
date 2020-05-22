@@ -1,13 +1,13 @@
 
-import {UniversityLibrarian, ReferenceItem } from './classes';
-import { Book, Author, Logger, Librarian} from './interfaces';
+import {UniversityLibrarian, ReferenceItem, Shelf } from './classes';
+import { Book, Author, Logger, Librarian, ShelfItem, Magazine} from './interfaces';
 import { Category } from './enums';
 import { BookProperties, BookOrUndefined, PersonBook } from './types';
 
 import { getBookProp, printBook, logBookTitles, logFirstAvailable,
   getBookAuthorByIndex, getAllBooks, getBookTitlesByCategory, calcTotalPages,
   getBookById, createCustomerID, createCustomer, сheckoutBooks, getTitles,
-  bookTitleTransform, getBookByIdViaInterface } from './functions';
+  bookTitleTransform, getBookByIdViaInterface, purge } from './functions';
 
 import RefBook from './classes/encyclopedia';
 
@@ -17,37 +17,6 @@ function showHello(divName: string, name: string) {
   const elt = document.getElementById(divName);
   elt.innerText = `Hello from ${name}`;
 }
-
-// start interfaces
-interface Magazine {
-  title: string,
-  publisher: string,
-}
-
-interface ShelfItem{
-  title: string;
-}
-
-class Shelf<T extends ShelfItem> {
-  private _items: Array<T> = [];
-
-  add(item: T): void {
-    this._items.push(item);
-  }
-
-  getFirst(): T {
-    return this._items[0];
-  }
-
-  find(title: string): T {
-    return this._items.find(item => item.title === title);
-  }
-
-  printTitles(): void{
-    this._items.forEach(item => console.log(item.title));
-  }
-}
-// end interfaces
 
 // start type 
 type BookRequiredFields = Required<Book>;
@@ -288,7 +257,5 @@ createCustomer(...paramsP);
 // end run
 
 // start functions
-function purge<T>(inventory: Array<T>): Array<T>{
-  return inventory.slice(2);
-}
+
 // end functions
