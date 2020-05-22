@@ -69,11 +69,25 @@ class Shelf<T extends ShelfItem> {
   }
 }
 
+class UniversityLibrarian implements Librarian {
+  name: string;
+  email: string;
+  department: string;
+
+  assistCustomer(custName: string): void {
+    console.log(`${this.name} is assisting ${custName}`);
+  }
+}
+
+
 // end interfaces
 
 // start type 
 
 type BookProperties = keyof Book;
+type PersonBook = Person & Book;
+type BookOrUndefined = Book | undefined;
+
 
 type BookRequiredFields = Required<Book>;
 type UpdateBook = Partial<Book>;
@@ -121,8 +135,10 @@ function writable(isWritable: boolean) {
 
 // start run
 
-// const universityLibrarian = new UniversityLibrarian()
-
+// Task05.04. 
+ const universityLibrarian: Librarian = new UniversityLibrarian();
+ universityLibrarian.name = 'LibrarianName';
+ universityLibrarian.assistCustomer('LibrarianCustomer');
 
 
 const offer: any = {
@@ -286,6 +302,20 @@ console.log(refBook);
 refBook.printItem();
 refBook.printCitation();
 
+// Task 05.05
+
+const personBook: PersonBook = {
+  author: 'Auth',
+  available: true,
+  category: Category.Angular,
+  email: 'email',
+  id: 11,
+  name: 'name',
+  title: 'title',
+  markDamaged: null,
+  pages: 3
+}
+console.log(personBook);
 
 // Task07.02
 
@@ -457,7 +487,7 @@ function createCustomerID(name: string, id: number): string
   return `${id}-${name}`;
 }
 
-function getBookById(id: number): object{
+function getBookById(id: number): BookOrUndefined {
   const books = getAllBooks();
   return books.find(book => book.id === id);
 }
