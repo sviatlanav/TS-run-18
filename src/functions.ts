@@ -211,5 +211,29 @@ export  function getBookProp(book: Book, property: BookProperties): any{
   export function logCategorySearch(error: Error, titles: string[]): void {
     if (error){
       console.log(`Error message ${error.message}`);
+    } else {
+      console.log('Found the following books: ');
+      console.log(titles);
     }
+  }
+
+  export function getBooksByCategoryPromice(category: Category): Promise<string[]>{
+    const p: Promise<string[]> = new Promise((resolve, reject) => {
+      setTimeout( () => {
+          const titles: string[] = getBookTitlesByCategory(category);  
+          if (titles.length > 0) {
+            resolve(titles);
+          }else{
+            reject('No books found');
+          }
+      }, 2000);
+    });
+
+    return p;    
+  }
+
+  export async function logSearchResults (category: Category): Promise<string[]> {
+    const result = await getBooksByCategoryPromice(category);
+    console.log(result);
+    return result;
   }

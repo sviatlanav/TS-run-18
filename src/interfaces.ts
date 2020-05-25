@@ -37,9 +37,9 @@ interface Book {
     title: string;
   }
 
-  export interface LibMgrCallback{
+  interface LibMgrCallback{
     (error: Error, titles: string[]):void;
   }
 
   export { Book, DamageLogger as Logger, Person,
-    Author, Librarian, Magazine, ShelfItem}
+    Author, Librarian, Magazine, ShelfItem, LibMgrCallback}

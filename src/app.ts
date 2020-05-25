@@ -6,7 +6,7 @@ import { BookProperties, BookOrUndefined, PersonBook, CreateCustomerFunctionType
 import { getBookProp, printBook, logBookTitles, logFirstAvailable,
   getBookAuthorByIndex, getAllBooks, getBookTitlesByCategory, calcTotalPages,
   getBookById, createCustomerID, createCustomer, сheckoutBooks, getTitles,
-  bookTitleTransform, getBookByIdViaInterface, purge, getBooksByCategory, logCategorySearch } from './functions';
+  bookTitleTransform, getBookByIdViaInterface, purge, getBooksByCategory, logCategorySearch, getBooksByCategoryPromice, logSearchResults } from './functions';
 
 import RefBook from './classes/encyclopedia';
 
@@ -253,11 +253,28 @@ function showHello(divName: string, name: string) {
 // console.log('Start');
 
 // getBooksByCategory(Category.JavaScript, logCategorySearch);
+// getBooksByCategory(Category.Software, logCategorySearch);
+// console.log('End');
+
+// T09.02
+// console.log('Start');
+
+// getBooksByCategoryPromice(Category.JavaScript)
+//   .then(data => { 
+//     console.log(data);
+//     return data.length })
+//   .then(numberOfBooks => console.log(numberOfBooks))
+//   .catch(console.log);
+// getBooksByCategoryPromice(Category.Software)
+//   .then(console.log)
+//   .catch(console.log);
 
 // console.log('End');
 
-// end run
+// T09.03
 
-// start functions
+// console.log('Start');
+logSearchResults(Category.JavaScript);
+logSearchResults(Category.Software).catch(console.log);
+// console.log('End');
 
-// end functions
