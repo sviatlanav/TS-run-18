@@ -1,4 +1,5 @@
 import * as  Interfaces from  '../interfaces';
+import { timeout } from '../decorators';
 
   // Task 05.01
   export abstract class ReferenceItem{
@@ -27,6 +28,7 @@ import * as  Interfaces from  '../interfaces';
        console.log('creating new ReferenceItem ');
     }
 
+    @timeout(3000)
     printItem(): void{
       console.log(`title ${this.title} was published in year ${this.year}`);
       console.log(ReferenceItem.department);
